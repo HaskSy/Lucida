@@ -2,7 +2,7 @@
 ```tasks
 tags include NOTSTARTED
 ```
-## Papers & Articles
+## Papers, Articles & Blogposts
 ```tasks
 no tags
 ```

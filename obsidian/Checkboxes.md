@@ -11,3 +11,10 @@ no tags
 ```tasks
 tags include TODO
 ```
+
+## Open Questions
+```tasks
+tags include QUESTION 
+```
+
+

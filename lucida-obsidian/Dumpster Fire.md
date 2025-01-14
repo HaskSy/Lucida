@@ -15,3 +15,4 @@ That's a storage for all of the related links that were ever found. Pure chaos. 
 - [Profunctor Optics: The Categorical View | The n-Category Café](https://golem.ph.utexas.edu/category/2020/01/profunctor_optics_the_categori.html)
 - [Lens |   Bartosz Milewski's Programming Cafe](https://bartoszmilewski.com/category/lens/)
 - [Posts tagged 'lens' from Twen van Laarhoven's blog](https://www.twanvl.nl/tag/lens)
+- [[https://arxiv.org/pdf/1703.10857|Profunctor Optics: Modular Data Accessors]]

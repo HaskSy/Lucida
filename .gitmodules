@@ -1,0 +1,3 @@
+[submodule "ProfunctorOpticsLecture"]
+	path = ProfunctorOpticsLecture
+	url = git@github.com:HaskSy/ProfunctorOpticsLecture.git

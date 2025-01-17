@@ -29,3 +29,6 @@ If we thing even further. A concern about user defined optics getting raised. Th
 	- "Macro" somewhat worrying. 
 		- If we only provide fixed set of optics. We can derive the rules for them and use in optimizations without any trouble
 		- Allowing user specified optics raises the questions of verification of it's well-defined. So our optimization passes won't change the behavior of the code.
+
+And there's special approach which is worth looking into - Swift KeyPath:
+- [ ] #TODO Lookup about Swift KeyPath

@@ -76,8 +76,6 @@ Worth noticing that Lenses work mostly only with product types, but it's not so 
 | Lens      | 1              |
 | Prism     | 0-1            |
 | Traversal | Natural number |
-- [ ] #TODO Here's mentioned derivation of optics using Template Haskell. Maybe should look into it
-
 ### Summary
 
 Not much to mention here. Only got a feeling that existential typing will flip me over when I man up to make first class optics user interface

@@ -16,5 +16,12 @@ tags include TODO
 ```tasks
 tags include QUESTION 
 ```
+## Design Questions
+```tasks
+tags include DESIGNQ
+```
 
-
+## Unfinished Secitons
+```tasks
+tags include FINISH
+```

@@ -24,7 +24,8 @@ An example of why these primitive abstractions are **Broken**:
 Paper mentions that the true, closed composability is not achievable in simplistic representations. But **Profunctor optics** is supposed to fix that.
 
 Reading imposed the following questions: 
-- [ ] #TODO Try to realize what's so lattice about optics. (I guess it's about inheritance, and optics hierarchy)
+- [x] #TODO Try to realize what's so lattice about optics. (I guess it's about inheritance, and optics hierarchy) ✅ 2025-02-04
+	> Yes, It was just about optics hierarchy
 
 ## Section 2
 
@@ -38,7 +39,8 @@ From what I've read, that's basically an `Iso` optics, but for whatever reason t
 
 It might be, because they explicitly state that they neither will rely on `from` and `to` functions being an inverse of each other nor they will enforce this property
 
-- [ ] #QUESTION Is `Adapter` is the same as `Iso`? And if so, why they won't enforce the optical properties of it
+- [x] #QUESTION Is `Adapter` is the same as `Iso`? And if so, why they won't enforce the optical properties of it ✅ 2025-02-04
+> Yes, an `Adapter` is simply another name for `Iso`. About the second questing is an obvious question in response: How?....
 
 ### Section 2.2 Traversal
 
@@ -52,26 +54,24 @@ data Traversal s t a b = Traversal { extract :: s -> FunList a b t }
 
 A container datatype is *traversable*, it it's data structure has a finite number of elements, and an ordering on the positions of those elements is specified.
 
-- [ ] #QUESTION "Because the ordering on positions is explicit, one may safely apply an effectful operation to each element." Huh?... I feel very mach disagreeable on that take because in that way we implicitly rely onto the implementation of `Traversable` and if it will change, lots of things can go wrong. If anything then, `Traversable` implementations should be closed of changes then. **BUUUUUUT!!! With `Traversable` being implemented as optics, it becomes first-class citizen thus allowing us not to change the implementation of `Traversable` everywhere, but to change it only in those places where we intend to change the optic.** I guess I managed to answer on that question myself, but i need to make sure
+- [x] #QUESTION "Because the ordering on positions is explicit, one may safely apply an effectful operation to each element." Huh?... ✅ 2025-02-04
+> I feel very mach disagreeable on that take because in that way we implicitly rely onto the implementation of `Traversable` and if it will change, lots of things can go wrong. If anything then, `Traversable` implementations should be closed of changes then. **BUUUUUUT!!! With `Traversable` being implemented as optics, it becomes first-class citizen thus allowing us not to change the implementation of `Traversable` everywhere, but to change it only in those places where we intend to change the optic.** I guess I managed to answer on that question myself, but i need to make sure
 
 ### Section 2.3 Traversals as concrete optics 
-
-- [ ] #QUESTION What the hell are "witnesses of traversability" e.g. 
-      `(A -> F B) -> (S -> F T)`
-
 
 >The type $(A \rightarrow F B) \rightarrow (S \rightarrow F\, T)$ is almost equivalent to the pair of functions $\texttt{contents ::}\; S \rightarrow A^n$ and $\texttt{fill ::}\; S \times B^n \rightarrow T$
 
 That's I kinda believe and understand because those "witnesses of traversability" are simply [[Tweag. Existential Optics#Van Laarhoven encoding| Van Laarhoven encoding]] but what I do not understand is that:
 
-- [ ] #QUESTION
+- [x]  #QUESTION ✅ 2025-02-04
     > for singleton containers $(n = 1)$ this specializes both to lenses and to prisms. 
 	
     Why would that even be the case for prisms? Seems like it's not true or too big of a stretch with $n$ being both 0 and 1
 
-- [ ]  #QUESTION
-	In paper they state:    $\text{Traversable } S \cong \exists n. A^n \times (B^n\rightarrow T)$
-    Why is that? Try look up to [[https://doi.org/10.1145/2578854.2503781|paper]]
+	> I guess the answer is in the fact, that under the constraint `Applicative f` this function becomes a signature of `traverse` method. Which is above in hierarchy than both `Prism` and `Lens`
+	- [ ] #TODO Maybe It's worth to provide an example
+ 
+- [ ]  #QUESTION$\text{Traversable } S \cong \exists n. A^n \times (B^n\rightarrow T)$ Why is that? Try look up to [[https://doi.org/10.1145/2578854.2503781|paper]]
 
 ## Section 3 Profunctors
 
@@ -97,7 +97,8 @@ Another, analogy worth to look back upon:
 
 **Stating the obvious:** profunctor is covariant by what it produces (aka. 'b') and contravariant by what it consumes (aka. 'a')
 
-- [ ] #QUESTION What's the importance of the statement above for lecture?
+- [x] #QUESTION What's the importance of the statement above for lecture? ✅ 2025-02-04
+> Not much
 
 An obvious example of profunctor is (Obviously function):
 ```haskell
@@ -113,8 +114,6 @@ class Profunctor p => Cartesian p where
 	first  :: p a b -> p (a, c) (b, c)
 	second :: p a b -> p (c, a) (c, b)
 ```
-
-- [ ] #QUESTION is there some fundamental reasoning why we need both `first` and `second` functions in declaration of `Cartesian` *typeclass*, when we can just use `flip` or is it just convenience thing?
 
 Laws are getting weirder and oddly specific, almost unrealistic to some extent?
 
@@ -145,7 +144,6 @@ instance Cartesian (->) where
 	second h = cross id h
 ```
 
-- [ ] #TODO Revisit Cartesian section. I don't feel like I grasped it correctly
 ### Cocartesian Profunctor
 
 Everything is very much similar to the above
@@ -175,7 +173,12 @@ plus :: (a -> c) -> (b -> d) -> Either a b -> Either c d
 ```
 
 >So too are functions with structured results, provided that there is an injection $A \rightarrow F A$ of pure values into that structure
- - [ ] #QUESTION  what does that even mean? This leads to constraint `Applicative` instead of `Functor` with bonuses. Which seems unnecessary, because of `<*>`
+ - [x] #QUESTION  what does that even mean? This leads to constraint `Applicative` instead of `Functor` with bonuses. Which seems unnecessary, because of `<*>` ✅ 2025-02-04
+ > The answer is that, if classical hierarchy was more fine grained, then we'd see a typeclass named `Pointed` which has the following signature:
+ ```haskell
+ class Functor f => Pointed f where
+	 pure :: a -> f a
+ ```
 
 ```haskell
 instance Applicative f => Cocartesian (UpStar f) where
@@ -229,11 +232,11 @@ adapretC2P (Adapret o i) = dimap o i
 ```
 
 
-- [ ] #TODO  Finish section
+- [ ] #FINISH  Finish section
 ## Section 5. Composing profunctor optics
-- [ ] #TODO  Finish section
+- [ ] #FINISH   Finish section
 ## Section 6. Related work
-- [ ] #TODO  Finish section
+- [ ] #FINISH   Finish section
 ## Section 7. Discussion
 
 Paper also subtly mentions `AffineTraversal` but they question it's usability as is.
@@ -242,4 +245,4 @@ Paper also subtly mentions `AffineTraversal` but they question it's usability as
 > Ill-behaved optics fits under constraints just as good as well-behaved one.
 
 That's seems like true for any optics engine
-- [ ] #TODO  Finish section
+- [ ] #FINISH   Finish section

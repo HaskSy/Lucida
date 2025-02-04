@@ -34,11 +34,13 @@ type Lens s a
 - [x] #TODO Look at the [lecture](https://cs-uni.ru/index.php?title=%D0%A4%D0%9F_5SE_%D0%BE%D1%81%D0%B5%D0%BD%D1%8C_2023) by [[Denis Moskvin. Zippers and Lenses|Denis Moskvin]] ✅ 2024-11-11
 
 Article states Van Laarhoven encoding works well with Traversals, but not so great with Prisms.
-- [ ] #TODO Find out why Van Laarhoven encoding does not work good with Prisms and what's "well"
+- [x] #TODO Find out why Van Laarhoven encoding does not work good with Prisms and what's "well" ✅ 2025-02-04
+	> [[Answer. Why Van Laarhoven is bad with Prisms | Look up here ]]
 
 ### Profunctor encoding
 
-- [ ] #TODO Read up about profunctors.
+- [x] #TODO Read up about profunctors. ✅ 2025-02-04
+	> [[Profunctor Optics. Modular Data Accessors| Read up, look here]]
 
 ```haskell
 type Lens s a
@@ -53,9 +55,10 @@ From what's stated in the article, only thing which is determines the type of op
 | Lens      | `Strong`     |
 | Iso       | `Profunctor` |
 | Prism     | `Choice`     |
-| Traversal | -            |
+| Traversal | `Monoidal`   |
 
-- [ ] #TODO Finish up the table which maps kind of optic to the set of constraints
+- [x] #TODO Finish up the table which maps kind of optic to the set of constraints ✅ 2025-02-04
+	> That's basically Profunctor Optics foreshadowed
 ### Existential encoding
 
 #### Lens

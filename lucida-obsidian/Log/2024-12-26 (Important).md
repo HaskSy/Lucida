@@ -8,7 +8,6 @@ Want to compose some thought while they're fresh...
 	- Syntax for prisms `.?`, `as`, `enum`
 	  - [ ] #TODO Make sure that's correct way of interpreting that
 	- Maybe some traversal with ranges, but that feels unnecessary for future progress
-  - [ ] #TODO Still feels somewhat useless. Whether it actually bring me closer to something
 - An open question I currently have is about first-classness and locality. I almost do not have any doubts about optics being first-class entity but the question is where:
 	- The language as a whole?
 	- Some scope in which this optics is derived syntactically and passed around there
@@ -31,4 +30,5 @@ If we thing even further. A concern about user defined optics getting raised. Th
 		- Allowing user specified optics raises the questions of verification of it's well-defined. So our optimization passes won't change the behavior of the code.
 
 And there's special approach which is worth looking into - Swift KeyPath:
-- [ ] #TODO Lookup about Swift KeyPath
+- [x] #TODO Lookup about Swift KeyPath ✅ 2025-02-04
+	> See [[Thoughts about Swift KeyPath]]

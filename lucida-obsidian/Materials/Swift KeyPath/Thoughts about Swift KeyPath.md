@@ -60,7 +60,7 @@ https://github.com/swiftlang/swift-evolution/blob/main/proposals/0227-identity-k
 
 A neutral element over concatenation of paths
 
-- [ ] #TODO Think about this concatenation, and how does it connected with `Self` in the language spec
+- [ ] #DESIGNQ Think about this concatenation, and how does it connected with `Self` in the language spec
 
 ##  Fifth Iteration
 
@@ -68,7 +68,7 @@ https://github.com/swiftlang/swift-evolution/blob/main/proposals/0249-key-path-l
 
 That feels like a big one. They want to allow `KeyPath` being used as Static getter, thus making them a functions `(Root) -> Value`.
 
-- [ ] #TODO Think about side effects, which are encapsulated inside of closure. When and how they should be called
+- [ ] #DESIGNQ Think about side effects, which are encapsulated inside of closure. When and how they should be called
 
 ## Sixth Iteration
 
@@ -78,7 +78,7 @@ https://github.com/swiftlang/swift-evolution/blob/main/proposals/0252-keypath-dy
 
 > That's as lens, as Lens can get.
 
-- [ ] #TODO It's said for the main alternative to not doing this at all. Why if String based dynamic lookup is already present
+- [ ] #QUESTION It's said for the main alternative to not doing this at all. Why if String based dynamic lookup is already present
 
 ## Seventh Iteration
 
@@ -95,4 +95,4 @@ I guess that's self apparent If we'll manage to make them first class, behaving 
 
 https://github.com/swiftlang/swift-evolution/blob/main/proposals/0438-metatype-keypath.md
 
-- [ ] #TODO They've encountered some problem, related to static prorepties. Look into possibly ocurring problems in our language
+- [ ] #DESIGNQ They've encountered some problem, related to static prorepties. Look into possibly ocurring problems in our language

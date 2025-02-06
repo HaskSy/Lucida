@@ -1,0 +1,1 @@
+In this folder there will be a draft of thoughts related to most of the features of the language. By the end this folder is expected to transform into set of several prosals.

@@ -90,6 +90,70 @@ Now talking about why such syntactic sugar would be needed:
 > For simplicity we will consider the case without overloaded constructors:
 - [ ] #DESIGNQ think about enum constructor overloading
 
-Let's say we access
+```swift
+enum E {
+	| mkE(Bool)
+	| mkT(String)
+}
+// Let's say we have an instance of enum
+let x = mkE(false)
+// some computation
+func comp(input: String): Int64;
+// And we want to perform some set of operations if this is `mkT`
+let result = x &. mkT &> comp
+// Being similar to:
+let result = if (let mkT(s) -> x) { Some(comp(s)) } else { None }
+// Maybe It's reasoanble to consider following syntax?
 
-- [ ] #TODO На работе пришлось делать работу... Продолжить в пятницу
+let result = E&.mkT(x) &> comp
+```
+It's a weird prism, but prism nonetheless: 
+$$\text{Prism}\,s\,t\,a\,b \cong \text{Prism}\quad\texttt{E}\quad\texttt{Option<Int64>}\quad\texttt{String}\quad \texttt{Int64} $$
+- [ ] #QUESTION Is it a polymorphic prism or an affine traversal? I'm yet to figure how to interpret one? Also, is this the same?
+
+$$\text{AffineTraverse}\,s\,t\,a\,b \cong \text{Prism}\quad\texttt{Option<s>}\quad\texttt{Option<t>}\quad a \quad b$$
+But that was an example of polymorphic prism, Is we want to see a monomorphic example, then our options are quite limited:
+- Either change value stored in enum and rebuild it
+- Or create same enum, but with different label
+	
+- [ ] #TODO Find use cases for changing the enum value
+- [ ] #TODO Find use-cases for creating label from same enum via another label
+
+- [ ] #DESIGNQ What's the need for prisms if there's `prop` and `match (this)`? Them being first-class?
+- [ ] #DESIGNQ Think about how it should work with associated types and whether they even matter
+- [ ] #QUESTION There's a mention of **Implicit convert functions** in the spec. What's that?
+### Option Type
+
+As it is mentioned separately, I'll also talk about it separately. There's one particular feature of `Option<T>`, that I consider being quite interesting for prisms. A postfix `?` operator, which allows to make a function calls and member accessing over `Option` type. Which is basically an **Affine Traverse**.
+
+An postfix `?` is basically a prism with the following signature:
+$$\text{Prism}\quad\texttt{Option<a>}\quad\texttt{Option<b>}\quad a \quad b$$
+It would be nice to generalize it for any enum in some way. There's a constraint that enum should be parametrized by single argument for it to work
+```swift
+let x = mkT("hallu")
+
+Prism.of(x, mkT).trim().somethingElse() // Option<String>
+```
+
+If operation doesn't leave the domain of enum (we simply call a different constructor for the same enum), then type can be inferred to:
+
+```swift
+let x = mkT("hallu")
+
+Prism.of(x, mkT).map(it -> mkE(it.size())) // E
+```
+- [ ] #DESIGNQ How should postfix `?`  be generalized for any enum?
+### Array Type (Array\<T\>)
+
+Let's start with some examples. For example, the lens `at`
+
+$$ \text{at(Int64)} \cong \text{Lens}\quad\texttt{Array<a>}\quad\texttt{Array<a>}\quad \texttt{Option<a>} \quad \texttt{Option<a>} $$
+Does nothing, simply look up the value if present
+
+- [ ] #DESIGNQ Think of **Spread syntax** `*`
+
+### VArray Type
+
+Doesn't feel like there's any difference with `Array<T>`, but who knows:
+- [ ] #DESIGNQ How should optics work with **VArray**
+

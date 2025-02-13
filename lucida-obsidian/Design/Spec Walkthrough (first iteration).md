@@ -49,7 +49,7 @@ Their use cases are yet to be decided, maybe they won't be present in the langua
 	> I'd rather not to touch this, right now, because it's not really that important
 ### Slice Type
 
-- [ ] #DESIGNQ How should optics work with Range types?
+- [ ] #DESIGNQ How should optics work with Slice types?
 	> I'd rather not to touch this, right now, because it's not really that important
 
 ### Function Type
@@ -154,6 +154,18 @@ Does nothing, simply look up the value if present
 
 ### VArray Type
 
-Doesn't feel like there's any difference with `Array<T>`, but who knows:
+Doesn't feel like there's any critical difference with `Array<T>`, it might be different in details, but from the interface and UX standpoint it better be almost the same as Array
+
 - [ ] #DESIGNQ How should optics work with **VArray**
 
+### Struct Type
+
+Now that's a big one.
+
+- [ ] #DESIGNQ Think how struct and field visibility would affect everything. For example. Let's say we have first class object `Lens`, and then we serialize it. After that we change the visibility of an object and deserialize it. Depending on the implementation, either nothing will happened or vulnerability will occur
+
+> When a value is defined as **value type**, so the struct type copies the value when performing operations such as assignment or function passing
+## Summary
+```tasks
+filename includes Spec Walkthrough (first iteration)
+```

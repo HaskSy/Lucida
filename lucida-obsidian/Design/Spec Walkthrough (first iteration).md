@@ -43,6 +43,8 @@ Their use cases are yet to be decided, maybe they won't be present in the langua
 
 - [ ] #DESIGNQ Think about subtyping here and how lack of variance blocks us here (Full stop?)
 - [ ] #DESIGNQ Should this actually be a traverse? Or it might be a lens from `tuple` to `tuple`. We know the size of tuple in compile time anyway
+- [ ] #DESIGNQ Range as argument of optics construction
+- [ ] #DESIGNQ Extension method or something special for tuples to check in compile time correctness of taken argument?
 ### Range Type
 
 - [ ] #DESIGNQ How should optics work with Range types?
@@ -55,10 +57,12 @@ Their use cases are yet to be decided, maybe they won't be present in the langua
 ### Function Type
 - [ ] #DESIGNQ How should optics work with Function types?
 	> A suggestions which might occur is whether to interpret optics as functions themselves. An answer to which will be dependent very much on encoding and public API. Whether that would be necessary. But right now let's assume that optics is capable of being a functional object and first class
-- [ ] #TODO Come up with some examples
+- [ ] #TODO Come up with some example
+- [ ] #DESIGNQ Automatic optics deconstruction into functional type
 
 ### Enum Type
 - [ ] #DESIGNQ How should optics work with Enum type (exaustive)?
+- [ ] #DESIGNQ Pattern synonyms, custom patterns, prisms as patterns
 	> let's say we have the following enum `E` from the spec:
 ```swift
 enum E {
@@ -115,7 +119,6 @@ $$\text{AffineTraverse}\,s\,t\,a\,b \cong \text{Prism}\quad\texttt{Option<s>}\qu
 But that was an example of polymorphic prism, Is we want to see a monomorphic example, then our options are quite limited:
 - Either change value stored in enum and rebuild it
 - Or create same enum, but with different label
-	
 - [ ] #TODO Find use cases for changing the enum value
 - [ ] #TODO Find use-cases for creating label from same enum via another label
 
@@ -147,7 +150,7 @@ Prism.of(x, mkT).map(it -> mkE(it.size())) // E
 
 Let's start with some examples. For example, the lens `at`
 
-$$ \text{at(Int64)} \cong \text{Lens}\quad\texttt{Array<a>}\quad\texttt{Array<a>}\quad \texttt{Option<a>} \quad \texttt{Option<a>} $$
+$$ \text{at(Int64)} \cong \text{AffineTraverse}\quad\texttt{Array<a>}\quad\texttt{Array<a>}\quad \texttt{a} \quad \texttt{a} $$
 Does nothing, simply look up the value if present
 
 - [ ] #DESIGNQ Think of **Spread syntax** `*`
@@ -165,6 +168,7 @@ Now that's a big one.
 - [ ] #DESIGNQ Think how struct and field visibility would affect everything. For example. Let's say we have first class object `Lens`, and then we serialize it. After that we change the visibility of an object and deserialize it. Depending on the implementation, either nothing will happened or vulnerability will occur
 
 > When a value is defined as **value type**, so the struct type copies the value when performing operations such as assignment or function passing
+- [ ] #DESIGNQ Name resolution
 ## Summary
 ```tasks
 filename includes Spec Walkthrough (first iteration)

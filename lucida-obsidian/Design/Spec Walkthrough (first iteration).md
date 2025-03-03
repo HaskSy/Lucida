@@ -61,6 +61,9 @@ Their use cases are yet to be decided, maybe they won't be present in the langua
 - [ ] #DESIGNQ Automatic optics deconstruction into functional type
 
 ### Enum Type
+
+- #NOTE Enums sometimes do autoboxing
+
 - [ ] #DESIGNQ How should optics work with Enum type (exaustive)?
 - [ ] #DESIGNQ Pattern synonyms, custom patterns, prisms as patterns
 	> let's say we have the following enum `E` from the spec:
@@ -165,10 +168,32 @@ Doesn't feel like there's any critical difference with `Array<T>`, it might be d
 
 Now that's a big one.
 
-- [ ] #DESIGNQ Think how struct and field visibility would affect everything. For example. Let's say we have first class object `Lens`, and then we serialize it. After that we change the visibility of an object and deserialize it. Depending on the implementation, either nothing will happened or vulnerability will occur
+- [ ] #DESIGNQ Think how struct and field visibility would affect everything. For example. Let's say we have first class object `Lens`, and then we serialize it. After that we change the visibility of an object and deserialize it. Depending on the implementation, either nothing will happened or vulnerability will occur.
+- [ ] #DESIGNQ In regard to visibility there's simpler problematic case. Which is a first class optical object, working on `private` field of an object leaking outside of access scope. The value can be, potentially changed without constraints and that's that, you can create any object without any care about it's invariant. Then this flawed object will cruise through program until it explodes
 
 > When a value is defined as **value type**, so the struct type copies the value when performing operations such as assignment or function passing
 - [ ] #DESIGNQ Name resolution
+
+> If a closure in an initial value expression captures an instance member variable defined by `var`, the closure cannot be used as a first-class citizen.
+
+- The difference is, that any arbitrary code can be ran in closure. While for non user defined optics, that's a different story
+
+> The member variable defined in the primary constructor cannot have the same name as those, outside the primary constructor
+
+## 4.4.1 Patterns
+
+- [ ] #DESIGNQ Prism patterns
+
+## 4.5.4 Loop Label
+
+#NOTE There's a loop-label syntax, which looks like `#label`, thus this syntax for optics if forbidden
+
+### 4.13.4 The Question Mark Operator
+
+- [ ] #DESIGNQ Think of generalization of question mark operator
+
+## 5.10 Black Box Intrinsic
+#NOTE Just to know that those `Black Box Intrinsics` exist
 ## Summary
 ```tasks
 filename includes Spec Walkthrough (first iteration)

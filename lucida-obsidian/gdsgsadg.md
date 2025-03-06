@@ -1,0 +1,6 @@
+- [ ] Check orphan rule for extend with generics
+- [ ] Class cloning (probably Primary Ctor)
+- [ ] `prop`??? -> Resolve
+- [ ]  \[ \*\] 
+- [ ] bench
+- [ ] Polymorphic optics won't work. Maybe separate hierarchy

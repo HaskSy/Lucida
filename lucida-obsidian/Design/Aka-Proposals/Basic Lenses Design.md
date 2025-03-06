@@ -104,6 +104,7 @@ The first question is how to perform cloning of that object:
 	- #QUESTION it's not really an interface, because `struct` and `class` is not part of the type. What is it?
 	- It's almost user-defined lens for each field of class
 	- #DESIGNQ Look closely into user-defined lenses for non-public stuff
+5. `extend`
 
 Yeah. It's worth reminding again that we're planning to automatically derive optics only for public stuff. Because tracking where you can and cannot use optics is basically `ownership`
 
@@ -191,7 +192,7 @@ main() {
 	let e = E2
 	let lambda = { => 
 		match {
-		    case @Optics(E&.E3) => ...
+		    case @Optics(e&.E3) => ...
 		}
 	}
 }
@@ -214,7 +215,7 @@ Composition with function using `<&`. Feels even more useless
 ```swift
 main() {
 	let lambda = { => 
-		let builder: Build<E, String> = @Optics(E&.E3 &> at(2) <& capitalize
+		let builder: Build<E, String> = @Optics(E&.E3 &> at(1) <& capitalize)
 	}
 }
 ```

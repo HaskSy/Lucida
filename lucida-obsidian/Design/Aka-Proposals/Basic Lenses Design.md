@@ -92,8 +92,7 @@ But that's all `ok` and fine, while we talk about what about `structs`. With cla
 
 The first question is how to perform cloning of that object:
 
-1. Builtin deep copy + value reassignment
-	- Most of the state will be separate, but some things won't be saved even by that (e.g. connections)
+1. Builtin deep copy + value reassignment - Most of the state will be separate, but some things won't be saved even by that (e.g. connections)
 	- #QUESTION Who in the right mind will use optics for effectful stuff?
 2. Builtin shallow copy + deep value reassignment
 	- `class` inside `class` inside `class`...

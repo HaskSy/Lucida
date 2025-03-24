@@ -117,5 +117,5 @@ Need to decide what to do. Fight or Submit. See document [[Optics First Classnes
 This one feels like way more simpler thing to design. Because:
 
 - There's really not much we can do, to limit user from writing bullshit
-- Syntax is secondary, will come up with somethinqg
-- What's more important, is property testing, to actually forbid user's keyboard to type bullshit (Leaving compiler realm, I won't do this shit on with macro)
+- Syntax is secondary, will come up with something
+- What's more important, is property testing, to actually forbid user's keyboard to type bullshit (Leaving compiler realm, I won't do this shit with macro)

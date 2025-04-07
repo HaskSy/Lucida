@@ -1,3 +1,6 @@
 [submodule "ProfunctorOpticsLecture"]
 	path = ProfunctorOpticsLecture
 	url = git@github.com:HaskSy/ProfunctorOpticsLecture.git
+[submodule "diploma-template"]
+	path = diploma-template
+	url = git@github.com:HaskSy/diploma-template.git

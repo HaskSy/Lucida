@@ -3,20 +3,20 @@
 everything here is struct, and they're declared in different packages from benchmark
 
 ## The very first version (not exactly)
-| Case                             |   Median |         Err |   Err% |     Mean |     Ratio |
-|:---------------------------------|---------:|------------:|-------:|---------:|----------:|
-| nativeBaseline                   | 2.534 ns | ±0.00834 ns |  ±0.3% | 2.542 ns |      100% |
-| opticsBaseline                   | 1.489 us |  ±0.0246 us |  ±1.7% | 1.635 us | +64409.5% |
-| withoutMagic                     | 1.643 us |  ±0.0261 us |  ±1.6% | 1.776 us | +69999.4% |
-| bestOptical                      | 176.5 ns |   ±3.097 ns |  ±1.8% | 186.4 ns |  +7256.9% |
-| inlinedComposition               | 176.9 ns |   ±1.044 ns |  ±0.6% | 186.5 ns |  +7260.7% |
-| inlinedCompositionDirectAccess   | 120.6 ns |   ±0.990 ns |  ±0.8% | 136.9 ns |  +5300.4% |
-| inlinedCompositionLambdaIndirect | 40.35 ns |  ±0.0697 ns |  ±0.2% | 40.47 ns |  +1497.1% |
-| inlinedCompositionLambda         | 26.44 ns |  ±0.0541 ns |  ±0.2% | 26.54 ns |   +947.1% |
-| highOrderComposition             | 24.85 ns |  ±0.0599 ns |  ±0.2% | 24.91 ns |   +882.9% |
-| bestOpticalAsLambda              | 40.35 ns |  ±0.0645 ns |  ±0.2% | 40.47 ns |  +1496.9% |
-| bestOpticalAsFunction            | 25.25 ns |  ±0.0493 ns |  ±0.2% | 25.32 ns |   +899.3% |
-| reconstruction                   | 24.91 ns |  ±0.0524 ns |  ±0.2% | 25.00 ns |   +886.3% |
+| Case                             |   Median |         Err |  Err% |     Mean |     Ratio |
+| :------------------------------- | -------: | ----------: | ----: | -------: | --------: |
+| nativeBaseline                   | 2.534 ns | ±0.00834 ns | ±0.3% | 2.542 ns |      100% |
+| opticsBaseline                   | 1.489 us |  ±0.0246 us | ±1.7% | 1.635 us | +64409.5% |
+| withoutMagic                     | 1.643 us |  ±0.0261 us | ±1.6% | 1.776 us | +69999.4% |
+| bestOptical                      | 176.5 ns |   ±3.097 ns | ±1.8% | 186.4 ns |  +7256.9% |
+| inlinedComposition               | 176.9 ns |   ±1.044 ns | ±0.6% | 186.5 ns |  +7260.7% |
+| inlinedCompositionDirectAccess   | 120.6 ns |   ±0.990 ns | ±0.8% | 136.9 ns |  +5300.4% |
+| inlinedCompositionLambdaIndirect | 40.35 ns |  ±0.0697 ns | ±0.2% | 40.47 ns |  +1497.1% |
+| inlinedCompositionLambda         | 26.44 ns |  ±0.0541 ns | ±0.2% | 26.54 ns |   +947.1% |
+| highOrderComposition             | 24.85 ns |  ±0.0599 ns | ±0.2% | 24.91 ns |   +882.9% |
+| bestOpticalAsLambda              | 40.35 ns |  ±0.0645 ns | ±0.2% | 40.47 ns |  +1496.9% |
+| bestOpticalAsFunction            | 25.25 ns |  ±0.0493 ns | ±0.2% | 25.32 ns |   +899.3% |
+| reconstruction                   | 24.91 ns |  ±0.0524 ns | ±0.2% | 25.00 ns |   +886.3% |
 
 - Storing pair of functions is painful
 - Compiler won't inline lambdas, if they were stored in struct right in place and then taken out

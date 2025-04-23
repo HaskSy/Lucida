@@ -14,7 +14,7 @@ Want to compose some thought while they're fresh...
   Primitive approach definitely allows for the first one, but that would be incredibly slow (allegedly, these talks do not have any sense before something will be actually implemented)
 
 A small look further is the question of composability. A very painful I'd say. After implementing the primitive representation there should occur some benchmarking of performance to see how slow those optical devices are.
-- [ ] #TODO If implemented primitive version. Benchmark it to see what to do further
+- [x] #TODO If implemented primitive version. Benchmark it to see what to do further ✅ 2025-04-09
 
 Even now I feel like composability is the biggest bottleneck. There's multiple ideas what to do with that:
 	- Nothing. Believe in language optimizer
